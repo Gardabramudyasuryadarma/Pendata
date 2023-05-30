@@ -7,5 +7,8 @@ It does not go in-depth into any particular topic - check out [the Jupyter Book 
 
 Dibawah ini kumpulan tugas penambangan data.
 
-```{tableofcontents}
+```{image} tes.jpg
+    :alt: fishy
+    :width: 200px
+    :align: center
 ```
