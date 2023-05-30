@@ -377,9 +377,9 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-     <input type="file" id="files-5c0fe82a-0df5-4688-8fa0-bc07d324e987" name="files[]" multiple disabled
+     <input type="file" id="files-49fcd223-7a1f-48fd-badd-5a9c31de6746" name="files[]" multiple disabled
         style="border:none" />
-     <output id="result-5c0fe82a-0df5-4688-8fa0-bc07d324e987">
+     <output id="result-49fcd223-7a1f-48fd-badd-5a9c31de6746">
       Upload widget is only available when the cell has been executed in the
       current browser session. Please rerun this cell to enable.
       </output>
@@ -641,6 +641,7 @@ scope.google.colab._files = {
 </div>
 </div>
 </div>
+<p>lalu yang akan saya lakukan selanjutnya adalah memisahkan label dengan fitur agar tidak bercampur</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#split dataset in features and target variable</span>
@@ -651,6 +652,7 @@ scope.google.colab._files = {
 </div>
 </div>
 </div>
+<p>di bawah ini adalah hasil dari fitur yang telah di pisahkan dengan label</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -676,6 +678,7 @@ scope.google.colab._files = {
 </div>
 </div>
 </div>
+<p>sedangkan di bawah ini adalah label yang telah di pisahkan dari fitur</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
@@ -699,6 +702,7 @@ Name: Species, Length: 150, dtype: object
 </div>
 </div>
 </div>
+<p>lalu saya membagi data test dan train sesuai dengan perintah yaitu 0.8/0.2 atau 80% / 20%</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#data test nya 20%</span>

@@ -418,9 +418,9 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-     <input type="file" id="files-e66e2d6f-fe88-4e5e-90e5-c86e53d34b56" name="files[]" multiple disabled
+     <input type="file" id="files-4c574691-0c52-4357-bece-a654f022a200" name="files[]" multiple disabled
         style="border:none" />
-     <output id="result-e66e2d6f-fe88-4e5e-90e5-c86e53d34b56">
+     <output id="result-4c574691-0c52-4357-bece-a654f022a200">
       Upload widget is only available when the cell has been executed in the
       current browser session. Please rerun this cell to enable.
       </output>
@@ -999,6 +999,8 @@ memory usage: 33.3 KB
 <img alt="_images/ce277fba149ae90599bcfc985b6af02e20b989233888bf646a11f2ee505e20d0.png" src="_images/ce277fba149ae90599bcfc985b6af02e20b989233888bf646a11f2ee505e20d0.png" />
 </div>
 </div>
+<p><strong>Data Processing</strong></p>
+<p>Convert data mencadi data dummy (0,1) menggunakan get_dummies method to untuk membuat dummy kolom dari tabel kategorical</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="s1">&#39;fbs&#39;</span><span class="p">,</span> <span class="s1">&#39;restecg&#39;</span><span class="p">,</span> <span class="s1">&#39;exang&#39;</span><span class="p">,</span> <span class="s1">&#39;slope&#39;</span><span class="p">,</span> <span class="s1">&#39;ca&#39;</span><span class="p">,</span> <span class="s1">&#39;thal&#39;</span><span class="p">])</span>
@@ -1006,6 +1008,7 @@ memory usage: 33.3 KB
 </div>
 </div>
 </div>
+<p>menggunakan StandardScaler dari sklearn</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standardScaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
@@ -1015,6 +1018,8 @@ memory usage: 33.3 KB
 </div>
 </div>
 </div>
+<p><strong>K Neighbors Classifier</strong></p>
+<p>Skor klasifikasi bervariasi tergantung pada nilai tetangga yang kita pilih. Oleh karena itu, saya akan membuat grafik skor untuk nilai K (tetangga) yang berbeda dan memeriksa kapan saya mencapai skor terbaik</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
@@ -1024,6 +1029,7 @@ memory usage: 33.3 KB
 </div>
 </div>
 </div>
+<p>sekarang skor nilai neighbor berbeda dalam array “knn_scores”. Sekarang saya akan memplotnya dan melihat nilai K mana yang memberikan skor terbaik</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn_scores</span> <span class="o">=</span> <span class="p">[]</span>
