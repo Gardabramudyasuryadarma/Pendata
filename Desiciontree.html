@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tugas Jarak &#8212; My sample book</title>
+    <title>DESICIONTREE_UAS &#8212; My sample book</title>
   
   
   
@@ -60,11 +60,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'tugas2';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Desiciontree';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="UTS PENDATA" href="Uts.html" />
-    <link rel="prev" title="Welcome to my website pendata" href="intro.html" />
+    <link rel="prev" title="Naive Bayes_ UAS" href="Naivebayes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -150,13 +149,13 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tugas Jarak</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tugas2.html">Tugas Jarak</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Uts.html">UTS PENDATA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tugas.html"><strong>DESICION TREE</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tugas3.html"><strong>TUGAS 3</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="Mlp.html"><strong>MLP_uAS</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="Naivebayes.html"><strong>Naive Bayes_ UAS</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="Desiciontree.html"><strong>DESICIONTREE_UAS</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>DESICIONTREE_UAS</strong></a></li>
 </ul>
 
     </div>
@@ -228,7 +227,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftugas2.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FDesiciontree.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -258,7 +257,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/tugas2.ipynb" target="_blank"
+      <li><a href="_sources/Desiciontree.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -338,7 +337,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Tugas Jarak</h1>
+    <h1>DESICIONTREE_UAS</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -352,13 +351,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="tugas-jarak">
-<h1>Tugas Jarak<a class="headerlink" href="#tugas-jarak" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="desiciontree-uas">
+<h1><strong>DESICIONTREE_UAS</strong><a class="headerlink" href="#desiciontree-uas" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sb</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span> <span class="c1"># Import Decision Tree Classifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> <span class="c1"># Import train_test_split function</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span> <span class="c1">#Import scikit-learn metrics module for accuracy calculation</span>
 </pre></div>
 </div>
 </div>
@@ -372,9 +373,9 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-     <input type="file" id="files-e2a2aa8f-e845-48fa-a1fa-9172f0f7d1b5" name="files[]" multiple disabled
+     <input type="file" id="files-d4afd3b9-ce8f-47c7-8c07-cf7651937297" name="files[]" multiple disabled
         style="border:none" />
-     <output id="result-e2a2aa8f-e845-48fa-a1fa-9172f0f7d1b5">
+     <output id="result-d4afd3b9-ce8f-47c7-8c07-cf7651937297">
       Upload widget is only available when the cell has been executed in the
       current browser session. Please rerun this cell to enable.
       </output>
@@ -593,198 +594,234 @@ scope.google.colab._files = {
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">winter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;cuaca_baru2.csv&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">winter</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     outlook humidity  windy play temperature
-0      sunny     high  benar   no         hot
-1      sunny     high  benar   no         hot
-2   overcast     high  salah  yes         hot
-3      rainy     high  salah  yes        mild
-4      rainy   normal  salah  yes        cool
-5      rainy   normal  benar   no        cool
-6      sunny     high  salah   no        mild
-7      sunny   normal  benar  yes        cool
-8      rainy   normal  salah  yes        mild
-9      sunny   normal  benar  yes        mild
-10  overcast     high  benar  yes        mild
-11  overcast   normal  salah  yes         hot
-12     rainy     high  benar   no        mild
-13  overcast   normal  benar  yes         NaN
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Iris.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">winter</span><span class="p">[</span><span class="s1">&#39;humidity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s1">&#39;high&#39;</span><span class="p">,</span><span class="s1">&#39;normal&#39;</span><span class="p">],</span>
-                        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">winter</span><span class="p">[</span><span class="s1">&#39;play&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">],</span>
-                        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">winter</span><span class="p">[</span><span class="s1">&#39;windy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s1">&#39;benar&#39;</span><span class="p">,</span> <span class="s1">&#39;salah&#39;</span><span class="p">],</span>
-                        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">winter</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     outlook  humidity  windy  play temperature
-0      sunny         1      1     0         hot
-1      sunny         1      1     0         hot
-2   overcast         1      0     1         hot
-3      rainy         1      0     1        mild
-4      rainy         0      0     1        cool
-5      rainy         0      1     0        cool
-6      sunny         1      0     0        mild
-7      sunny         0      1     1        cool
-8      rainy         0      0     1        mild
-9      sunny         0      1     1        mild
-10  overcast         1      1     1        mild
-11  overcast         0      0     1         hot
-12     rainy         1      1     0        mild
-13  overcast         0      1     1         NaN
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Id  SepalLengthCm  SepalWidthCm  PetalLengthCm  PetalWidthCm  \
+0      1            5.1           3.5            1.4           0.2   
+1      2            4.9           3.0            1.4           0.2   
+2      3            4.7           3.2            1.3           0.2   
+3      4            4.6           3.1            1.5           0.2   
+4      5            5.0           3.6            1.4           0.2   
+..   ...            ...           ...            ...           ...   
+145  146            6.7           3.0            5.2           2.3   
+146  147            6.3           2.5            5.0           1.9   
+147  148            6.5           3.0            5.2           2.0   
+148  149            6.2           3.4            5.4           2.3   
+149  150            5.9           3.0            5.1           1.8   
+
+            Species  
+0       Iris-setosa  
+1       Iris-setosa  
+2       Iris-setosa  
+3       Iris-setosa  
+4       Iris-setosa  
+..              ...  
+145  Iris-virginica  
+146  Iris-virginica  
+147  Iris-virginica  
+148  Iris-virginica  
+149  Iris-virginica  
+
+[150 rows x 6 columns]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binar</span> <span class="o">=</span> <span class="n">winter</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;humidity&#39;</span><span class="p">,</span><span class="s1">&#39;windy&#39;</span><span class="p">,</span><span class="s1">&#39;play&#39;</span><span class="p">]]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">binar</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    humidity  windy  play
-0          1      1     0
-1          1      1     0
-2          1      0     1
-3          1      0     1
-4          0      0     1
-5          0      1     0
-6          1      0     0
-7          0      1     1
-8          0      0     1
-9          0      1     1
-10         1      1     1
-11         0      0     1
-12         1      1     0
-13         0      1     1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#split dataset in features and target variable</span>
+<span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SepalLengthCm&#39;</span><span class="p">,</span> <span class="s1">&#39;SepalWidthCm&#39;</span><span class="p">,</span> <span class="s1">&#39;PetalLengthCm&#39;</span><span class="p">,</span> <span class="s1">&#39;PetalWidthCm&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span> <span class="c1"># Features</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">Species</span> <span class="c1"># Target variable</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">hamming</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">latihan</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="nb">id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="k">while</span> <span class="n">latihan</span> <span class="o">&lt;</span> <span class="mi">13</span><span class="p">:</span>
-
-    <span class="n">latihan</span> <span class="o">=</span> <span class="n">latihan</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="nb">id</span>      <span class="o">=</span> <span class="nb">id</span> <span class="o">+</span><span class="mi">1</span>
-
-    <span class="n">a</span> <span class="o">=</span><span class="p">[</span><span class="n">winter</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">13</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">winter</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">13</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="n">winter</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">13</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span>
-    <span class="n">b</span> <span class="o">=</span><span class="p">[</span><span class="n">winter</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">latihan</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">winter</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">latihan</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="n">winter</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">latihan</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ke&#39;</span><span class="p">,</span><span class="nb">id</span><span class="p">,</span><span class="s1">&#39;=&gt;&#39;</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-
-
-    <span class="n">hamming_distance</span> <span class="o">=</span> <span class="n">hamming</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hamming_distance</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="n">hamming_distance</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ke 0 =&gt; [0, 1, 1] [1, 1, 0]
-0.6666666666666666
-ke 1 =&gt; [0, 1, 1] [1, 1, 0]
-0.6666666666666666
-ke 2 =&gt; [0, 1, 1] [1, 0, 1]
-0.6666666666666666
-ke 3 =&gt; [0, 1, 1] [1, 0, 1]
-0.6666666666666666
-ke 4 =&gt; [0, 1, 1] [0, 0, 1]
-0.3333333333333333
-ke 5 =&gt; [0, 1, 1] [0, 1, 0]
-0.3333333333333333
-ke 6 =&gt; [0, 1, 1] [1, 0, 0]
-1.0
-ke 7 =&gt; [0, 1, 1] [0, 1, 1]
-0.0
-ke 8 =&gt; [0, 1, 1] [0, 0, 1]
-0.3333333333333333
-ke 9 =&gt; [0, 1, 1] [0, 1, 1]
-0.0
-ke 10 =&gt; [0, 1, 1] [1, 1, 1]
-0.3333333333333333
-ke 11 =&gt; [0, 1, 1] [0, 0, 1]
-0.3333333333333333
-ke 12 =&gt; [0, 1, 1] [1, 1, 0]
-0.6666666666666666
-ke 13 =&gt; [0, 1, 1] [0, 1, 1]
-0.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     SepalLengthCm  SepalWidthCm  PetalLengthCm  PetalWidthCm
+0              5.1           3.5            1.4           0.2
+1              4.9           3.0            1.4           0.2
+2              4.7           3.2            1.3           0.2
+3              4.6           3.1            1.5           0.2
+4              5.0           3.6            1.4           0.2
+..             ...           ...            ...           ...
+145            6.7           3.0            5.2           2.3
+146            6.3           2.5            5.0           1.9
+147            6.5           3.0            5.2           2.0
+148            6.2           3.4            5.4           2.3
+149            5.9           3.0            5.1           1.8
+
+[150 rows x 4 columns]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">urut</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0, 0.0, 0.0, 0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 0.6666666666666666, 0.6666666666666666, 0.6666666666666666, 0.6666666666666666, 0.6666666666666666, 1.0]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         Iris-setosa
+1         Iris-setosa
+2         Iris-setosa
+3         Iris-setosa
+4         Iris-setosa
+            ...      
+145    Iris-virginica
+146    Iris-virginica
+147    Iris-virginica
+148    Iris-virginica
+149    Iris-virginica
+Name: Species, Length: 150, dtype: object
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="o">=-</span><span class="mi">1</span>
-<span class="n">dat2</span><span class="o">=</span><span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-  <span class="n">no</span><span class="o">=</span><span class="n">no</span><span class="o">+</span><span class="mi">1</span>
-  <span class="n">masuk_data</span> <span class="o">=</span> <span class="n">urut</span><span class="p">,</span><span class="n">i</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#data test nya 20%</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Decision Tree classifer object</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
 
-  <span class="n">dat2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">masuk_data</span><span class="p">)</span>
+<span class="c1"># Train Decision Tree Classifer</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#Predict the response for test dataset</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dat2</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(None, 0.0)
-(None, 0.0)
-(None, 0.0)
-(None, 0.3333333333333333)
-(None, 0.3333333333333333)
-(None, 0.3333333333333333)
-(None, 0.3333333333333333)
-(None, 0.3333333333333333)
-(None, 0.6666666666666666)
-(None, 0.6666666666666666)
-(None, 0.6666666666666666)
-(None, 0.6666666666666666)
-(None, 0.6666666666666666)
-(None, 1.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Iris-setosa&#39; &#39;Iris-versicolor&#39; &#39;Iris-versicolor&#39; &#39;Iris-setosa&#39;
+ &#39;Iris-virginica&#39; &#39;Iris-versicolor&#39; &#39;Iris-virginica&#39; &#39;Iris-setosa&#39;
+ &#39;Iris-setosa&#39; &#39;Iris-virginica&#39; &#39;Iris-versicolor&#39; &#39;Iris-setosa&#39;
+ &#39;Iris-virginica&#39; &#39;Iris-versicolor&#39; &#39;Iris-versicolor&#39; &#39;Iris-setosa&#39;
+ &#39;Iris-versicolor&#39; &#39;Iris-versicolor&#39; &#39;Iris-setosa&#39; &#39;Iris-setosa&#39;
+ &#39;Iris-versicolor&#39; &#39;Iris-versicolor&#39; &#39;Iris-virginica&#39; &#39;Iris-setosa&#39;
+ &#39;Iris-virginica&#39; &#39;Iris-versicolor&#39; &#39;Iris-setosa&#39; &#39;Iris-setosa&#39;
+ &#39;Iris-versicolor&#39; &#39;Iris-virginica&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model Accuracy, how often is the classifier correct?</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.9666666666666667
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">metric</span> <span class="o">=</span> <span class="s1">&#39;minkowski&#39;</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KNeighborsClassifier()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">KNeighborsClassifier</label><div class="sk-toggleable__content"><pre>KNeighborsClassifier()</pre></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn_pred</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span><span class="n">accuracy_score</span>
+<span class="n">ac</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">knn_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ac</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="c1"># Mengaktifkan/memanggil/membuat fungsi klasifikasi Naive Bayes</span>
+<span class="n">modelnb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="c1"># Memasukkan data training pada fungsi klasifikasi Naive Bayes</span>
+<span class="n">nbtrain</span> <span class="o">=</span> <span class="n">modelnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menentukan hasil prediksi dari x_test</span>
+<span class="n">nb_pred</span> <span class="o">=</span> <span class="n">nbtrain</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">nb_pred</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Iris-setosa&#39;, &#39;Iris-versicolor&#39;, &#39;Iris-versicolor&#39;, &#39;Iris-setosa&#39;,
+       &#39;Iris-virginica&#39;, &#39;Iris-versicolor&#39;, &#39;Iris-virginica&#39;,
+       &#39;Iris-setosa&#39;, &#39;Iris-setosa&#39;, &#39;Iris-virginica&#39;, &#39;Iris-versicolor&#39;,
+       &#39;Iris-setosa&#39;, &#39;Iris-virginica&#39;, &#39;Iris-versicolor&#39;,
+       &#39;Iris-versicolor&#39;, &#39;Iris-setosa&#39;, &#39;Iris-versicolor&#39;,
+       &#39;Iris-versicolor&#39;, &#39;Iris-setosa&#39;, &#39;Iris-setosa&#39;, &#39;Iris-versicolor&#39;,
+       &#39;Iris-versicolor&#39;, &#39;Iris-virginica&#39;, &#39;Iris-setosa&#39;,
+       &#39;Iris-virginica&#39;, &#39;Iris-versicolor&#39;, &#39;Iris-setosa&#39;, &#39;Iris-setosa&#39;,
+       &#39;Iris-versicolor&#39;, &#39;Iris-virginica&#39;], dtype=&#39;&lt;U15&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">akurat</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">nb_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">akurat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9666666666666667
 </pre></div>
 </div>
 </div>
@@ -823,22 +860,13 @@ ke 13 =&gt; [0, 1, 1] [0, 1, 1]
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="Naivebayes.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Welcome to my website pendata</p>
+        <p class="prev-next-title"><strong>Naive Bayes_ UAS</strong></p>
       </div>
-    </a>
-    <a class="right-next"
-       href="Uts.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">UTS PENDATA</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
